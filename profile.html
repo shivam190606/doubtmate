@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+  <div class="card">
+    <h2>{{ profile_user.username }}'s Profile</h2>
+    <p>Joined on: {{ profile_user.created_at.split('T')[0] }}</p>
+  </div>
+
+  <div class="card">
+    <h3>Posted Doubts</h3>
+
+    {% if doubts|length == 0 %}
+      <p>No doubts posted yet.</p>
+    {% else %}
+      {% for d in doubts %}
+        <div class="doubt">
+          <h3><a href="{{ url_for('view_doubt', doubt_id=d.id) }}">{{ d.title }}</a></h3>
+          <div class="doubt-meta">• {{ d.created_at.split('T')[0] }}</div>
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+
+{% endblock %}
+
+

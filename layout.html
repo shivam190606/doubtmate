@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DoubtMate</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<nav class="nav">
+<div class="container">
+<a href="{{ url_for('index') }}" class="brand">DoubtMate</a>
+<div class="nav-right">
+{% if user %}
+<span class="welcome">Hi, {{ user.username }}</span>
+<a href="{{ url_for('post_doubt') }}" class="btn">Post Doubt</a>
+<a href="{{ url_for('logout') }}" class="btn ghost">Logout</a>
+{% else %}
+<a href="{{ url_for('signup') }}" class="btn">Sign up</a>
+<a href="{{ url_for('login') }}" class="btn ghost">Log in</a>
+{% endif %}
+</div>
+</div>
+</nav>
+
+
+<main class="container">
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<div class="flash">
+{% for m in messages %}
+<div class="flash-item">{{ m }}</div>
+{% endfor %}
+</div>
+{% endif %}
+{% endwith %}
+
+
+{% block content %}{% endblock %}
+</main>
+
+
+<footer class="footer">
+<div class="container">Made with ❤️ for students • DoubtMate MVP</div>
+</footer>
+</body>
+</html>

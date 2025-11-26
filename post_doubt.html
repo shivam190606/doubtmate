@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+{% block content %}
+  <div class="card">
+    <h2>Post a Doubt</h2>
+
+    <form method="post">
+      <label>Title</label>
+      <input name="title" maxlength="120" required />
+
+      <label>Description</label>
+      <textarea name="description" rows="8" required></textarea>
+
+      <button class="btn" type="submit">Post</button>
+    </form>
+  </div>
+{% endblock %}

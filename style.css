@@ -1,0 +1,151 @@
+/* Simple & clean theme (white + blue) */
+* {
+    box-sizing: border-box;
+    font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+body {
+    background: #f7fbff;
+    color: #0b1a2b;
+    margin: 0;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.nav {
+    background: #fff;
+    border-bottom: 1px solid #e6eef8;
+}
+
+.nav .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand {
+    text-decoration: none;
+    font-weight: 700;
+    color: #0b3d91;
+    font-size: 22px;
+}
+
+.nav-right {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.btn {
+    background: #0b66ff;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+
+.btn.ghost {
+    background: transparent;
+    color: #0b66ff;
+    border: 1px solid #cfe0ff;
+}
+
+.welcome {
+    color: #2b3b4a;
+    margin-right: 8px;
+}
+
+.page-title {
+    margin-top: 24px;
+    color: #0b3d91;
+}
+
+.card {
+    background: #fff;
+    padding: 18px;
+    border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(11, 61, 145, 0.06);
+    margin: 16px 0;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0 14px 0;
+    border: 1px solid #e1efff;
+    border-radius: 8px;
+}
+
+.doubt-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.doubt {
+    padding: 14px;
+    border-radius: 10px;
+    background: linear-gradient(180deg, #ffffff, #fbfdff);
+    border: 1px solid #eef6ff;
+}
+
+.doubt-title {
+    margin: 0;
+    font-size: 18px;
+}
+
+.doubt-meta {
+    font-size: 12px;
+    color: #6b7a8b;
+    margin-bottom: 8px;
+}
+
+.doubt-desc {
+    margin: 8px 0;
+    color: #233042;
+}
+
+.link {
+    color: #0b66ff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.footer {
+    text-align: center;
+    padding: 14px 0;
+    color: #6b7a8b;
+}
+
+.flash {
+    margin: 10px 0;
+}
+
+.flash-item {
+    background: #e9f3ff;
+    border: 1px solid #cfe0ff;
+    padding: 8px 12px;
+    border-radius: 8px;
+    color: #0b3d91;
+}
+
+.reply {
+    background: #fbfdff;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #eef6ff;
+}
+
+.reply-meta {
+    font-size: 12px;
+    color: #6b7a8b;
+    margin-bottom: 6px;
+}

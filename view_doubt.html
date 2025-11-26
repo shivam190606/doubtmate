@@ -1,0 +1,86 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+  <div class="card">
+    <h2>{{ doubt.title }}</h2>
+
+    <div class="doubt-meta">
+      by 
+      <a href="{{ url_for('profile', username=doubt.username) }}">
+        {{ doubt.username }}
+      </a>
+      • {{ doubt.created_at.split('T')[0] }}
+    </div>
+
+    <p class="doubt-desc">{{ doubt.description }}</p>
+
+    {% if user and user.id == doubt.user_id %}
+      <div style="margin-top: 12px;">
+        <a class="btn ghost" href="{{ url_for('edit_doubt', doubt_id=doubt.id) }}">Edit</a>
+
+        <form method="post" action="{{ url_for('delete_doubt', doubt_id=doubt.id) }}" style="display:inline;">
+          <button class="btn ghost"
+                  onclick="return confirm('Delete this doubt?');"
+                  type="submit">
+            Delete
+          </button>
+        </form>
+      </div>
+    {% endif %}
+  </div>
+
+
+  <!-- Replies Section -->
+  <div class="card">
+    <h3>Replies</h3>
+
+    {% if replies|length == 0 %}
+      <p>No replies yet. Be the first to help!</p>
+    {% else %}
+      {% for r in replies %}
+        <div class="reply">
+
+          <div class="reply-meta">
+            <a href="{{ url_for('profile', username=r.username) }}">
+              {{ r.username }}
+            </a>
+            • {{ r.created_at.split('T')[0] }}
+
+            {% if user and user.id == r.user_id %}
+              <span style="float:right;">
+                <a class="link" href="{{ url_for('edit_reply', reply_id=r.id) }}">Edit</a> |
+                <form method="post" action="{{ url_for('delete_reply', reply_id=r.id) }}" style="display:inline;">
+                  <button class="link"
+                          style="background:none;border:none;padding:0;color:#0b66ff;cursor:pointer"
+                          onclick="return confirm('Delete this reply?');">
+                    Delete
+                  </button>
+                </form>
+              </span>
+            {% endif %}
+          </div>
+
+          <p>{{ r.content }}</p>
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+
+
+  <!-- Reply Box -->
+  {% if user %}
+    <div class="card">
+      <a class="btn" href="{{ url_for('ai_suggest', doubt_id=doubt.id) }}">AI Suggest Answer</a>
+<br><br>
+
+      <h3>Your Reply</h3>
+      <form action="{{ url_for('reply', doubt_id=doubt.id) }}" method="post">
+        <textarea name="content" rows="4" required></textarea>
+        <button class="btn" type="submit">Post Reply</button>
+      </form>
+    </div>
+  {% else %}
+    <p><a href="{{ url_for('login') }}">Log in</a> to reply.</p>
+  {% endif %}
+
+{% endblock %}
